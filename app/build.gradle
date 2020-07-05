@@ -47,12 +47,7 @@ dependencies {
     def retrofit_version = "2.5.0"
     def okhttp3_version = "4.1.0"
 
-    // ViewModel
-//    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
-    // LiveData
-//    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
 
-    // old version to solve problem of no arg contsructor
     implementation "android.arch.lifecycle:extensions:1.1.0"
     implementation "android.arch.lifecycle:viewmodel:1.1.0"
     implementation "android.arch.lifecycle:reactivestreams:1.1.0"
@@ -65,7 +60,6 @@ dependencies {
     // Retrofit & OkHttp
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-//    implementation "com.squareup.okhttp3:okhttp:4.1.0"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
     // databinding
     kapt 'com.android.databinding:compiler:3.1.4'
