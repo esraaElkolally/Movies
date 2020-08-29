@@ -1,44 +1,67 @@
 package com.example.postslistapp.view.posts
 
+import android.app.Activity
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.postslistapp.model.common.loadImage
 import com.example.postslistapp.App
 import com.example.postslistapp.R
 import com.example.postslistapp.databinding.ItemPostsBinding
-import com.example.postslistapp.model.entities.PostsResponseModel
+import com.example.postslistapp.model.entities.Movies
+import com.example.postslistapp.view.details.DetailsActivity
 import com.example.postslistapp.view.posts.PostsAdapter.PostsViewHolder
-import kotlinx.android.synthetic.main.item_posts.view.*
 import java.util.*
 
-class PostsAdapter : RecyclerView.Adapter<PostsViewHolder>() {
-    private var modelList = ArrayList<PostsResponseModel>()
+class PostsAdapter(val _context: Activity) : RecyclerView.Adapter<PostsViewHolder>() {
+    private var modelList = ArrayList<Movies>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
-        val layoutInflater = LayoutInflater.from(App.getContext())
-        val binding: ItemPostsBinding = DataBindingUtil.inflate(layoutInflater,
+        val layoutInflater = LayoutInflater.from(_context)
+        val binding: ItemPostsBinding = DataBindingUtil.inflate(
+            layoutInflater,
             R.layout.item_posts,
-            parent, false)
+            parent, false
+        )
+
         return PostsViewHolder(binding)
 
     }
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
-        holder.itemViewbinding.itemModel=modelList[position]
-        holder.itemViewbinding.executePendingBindings()
-
+        modelList.let {
+            holder.binding.itemModel = modelList[position]
+            holder.binding.movieImage.loadImage(modelList[position].medium_cover_image)
+            setListeners(holder.binding.root, modelList[position])
+        }
+        holder.binding.executePendingBindings()
     }
+
+    private fun setListeners(container: View, movie: Movies) {
+        container.setOnClickListener {
+            DetailsActivity.open(activity = _context, movieModel = movie)
+        }
+    }
+
+
     override fun getItemCount(): Int {
         return modelList.size
     }
 
-    fun setModelList(modelList: ArrayList<PostsResponseModel>) {
+    fun setModelList(modelList: ArrayList<Movies>) {
         this.modelList = modelList
         notifyDataSetChanged()
     }
 
-     class PostsViewHolder( val itemViewbinding: ItemPostsBinding) : ViewHolder(itemViewbinding.root)
+    class PostsViewHolder(val binding: ItemPostsBinding) :
+        ViewHolder(binding.root) {
+
+    }
 }
+
+
+

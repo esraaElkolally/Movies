@@ -4,18 +4,13 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.postslistapp.model.Repository
-import com.example.postslistapp.model.entities.PostsResponseModel
-import com.example.postslistapp.model.remote.ConnectionGenerator
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.concurrent.ScheduledExecutorService
-import java.util.concurrent.ScheduledThreadPoolExecutor
+import com.example.postslistapp.model.entities.MovieModel
+import com.example.postslistapp.model.entities.Movies
 
 class PostsViewModel(application: Application) : AndroidViewModel(application) {
     private val context: Context
-    lateinit var list: LiveData<List<PostsResponseModel>>
+    lateinit var moveModel: LiveData<MovieModel>
     var repository: Repository
 
     init {
@@ -24,8 +19,8 @@ class PostsViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    fun getPostsList(): LiveData<List<PostsResponseModel>> {
-        list = (repository.getPostsListFromRemote())
-        return list
+    fun getPostsList(): LiveData<MovieModel> {
+        moveModel = (repository.getPostsListFromRemote())
+        return moveModel
     }
 }

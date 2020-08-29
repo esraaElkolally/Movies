@@ -1,14 +1,14 @@
 package com.example.postslistapp.model.remote
 
-import com.example.postslistapp.model.entities.PostsResponseModel
+import com.example.postslistapp.model.entities.MovieModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Observable
 
 class ConnectionGenerator {
     companion object {
-        fun getPostsList(): Flowable<List<PostsResponseModel>>{
+        fun getPostsList(): Flowable<MovieModel>{
 
-            return ConnectionClient.connectionAPIs.getPostsList()
+            return ConnectionClient.connectionAPIs.getPostsList().distinct()
         }
 
 

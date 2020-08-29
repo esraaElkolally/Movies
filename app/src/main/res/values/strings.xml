@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">PostsListApp</string>
+    <string name="background">background_details</string>
+    <string name="download_torrents">Download Torrents</string>
+    <string name="copy_successfully">Torrent Copied to Cliboard</string>
+    <string name="copy_torrent"> Copied Torrent Link</string>
+    <string name="published">Released in</string>
+    <string name="torrent_url">Torrent Url</string>
+    <string name="invalidUrl">Invalid Url Url</string>
+    <string name="downloading">Downloading…</string>
 </resources>

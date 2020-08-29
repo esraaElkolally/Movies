@@ -7,5 +7,17 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="title">
+        <item name="android:textSize">@dimen/text_14sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">@dimen/margin_5dp</item>
+    </style>
 
+    <style name="text_description">
+        <item name="android:textSize">@dimen/text_18sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_margin">@dimen/margin_10dp</item>
+    </style>
 </resources>

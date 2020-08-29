@@ -1,50 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
-<variable
-    name="itemModel"
-    type="com.example.postslistapp.model.entities.PostsResponseModel" />
+
+        <variable
+            name="itemModel"
+            type="com.example.postslistapp.model.entities.Movies" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+      >
+
+        <ImageView
+            android:id="@+id/movie_image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/background"
+            android:scaleType="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/placeholder" />
 
         <TextView
             android:id="@+id/titleTv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@{itemModel.title}"
+            android:layout_marginTop="16dp"
+            android:text="@{itemModel.title_long}"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:textColor="@color/colorPrimary"
-            app:layout_constraintEnd_toStartOf="@id/userIdTv"
-            app:layout_constraintHorizontal_bias="0.079"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/bodyTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{itemModel.body}"
-            android:textColor="@color/colorAccent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/movie_image" />
+
+        <TextView
+            android:id="@+id/summeryTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{@string/published+' ' +itemModel.year }"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTv" />
 
-        <TextView
-            android:id="@+id/userIdTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
-            android:text="@{itemModel.id + ``}"
-            android:layout_marginEnd="10dp"
-            android:textColor="@color/colorAccent"
-            android:layout_marginStart="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
